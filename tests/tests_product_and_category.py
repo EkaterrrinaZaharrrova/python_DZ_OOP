@@ -60,3 +60,17 @@ def test_add_product():
 
 def test_add_product_type(product_fixture):
     assert isinstance(product_fixture, Product)
+
+
+def test_str_product(product_fixture):
+    assert product_fixture.__str__() == "Iphone 15 , 210000 руб. Остаток: 8 шт"
+
+
+def test__add__product():
+    p1 = Product("phones", "black, 1024GB", 5900.0, 13)
+    p2 = Product("phones", "black, 1024GB", 5100.0, 23)
+    assert Product.__add__(p1, p2) == 194000.0
+
+
+def test_str_category(category_fixture):
+    assert category_fixture.__str__() == "phones,  количество продуктов: 16 шт"

@@ -13,9 +13,10 @@ def product_fixture():
 @pytest.fixture
 def category_fixture():
     """Фикстура для класса категории."""
-    return Category("Смартфоны",
-                         "Смартфоны - средство получения дополнительных функций для удобства жизни", [])
+    prod_1 = Product("iphone", "16 S max", 13_658, 7)
+    prod_2 = Product("samsung", "A 564", 12_467, 9)
 
+    return Category("phones", "new", [prod_1, prod_2])
 
 @pytest.fixture
 def count_category_fixture() -> list:
