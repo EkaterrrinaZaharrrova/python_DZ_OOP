@@ -23,6 +23,8 @@ class Category:
             self.__products.append(product)
             self.product_count += Product.quantity
 
+        else:
+            raise TypeError
 
     @property
     def products(self):
