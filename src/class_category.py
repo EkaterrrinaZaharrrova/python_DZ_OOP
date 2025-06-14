@@ -18,13 +18,17 @@ class Category:
         self.product_count += len(products) if products else 0
 
 
-    def add_product(self, product: Product):
-        if isinstance(self.products, Product):
+
+    def add_product(self, product: Product) -> None:
+
+        if isinstance(product, Product):
             self.__products.append(product)
-            self.product_count += Product.quantity
+            self.product_count += 1
 
         else:
             raise TypeError
+
+
 
     @property
     def products(self):

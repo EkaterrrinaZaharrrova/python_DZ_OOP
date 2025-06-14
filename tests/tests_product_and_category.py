@@ -1,7 +1,7 @@
 import pytest
 
 from src.class_category import Category
-from src.class_product import Product, Smartphone, LawnGrass
+from src.class_product import LawnGrass, Product, Smartphone
 
 
 def test_class_product(product_fixture):
@@ -77,3 +77,16 @@ def test_class_grass(smartphone: Smartphone, grass: LawnGrass) -> None:
     assert LawnGrass.__add__(grass, grass) == 13500.0
     with pytest.raises(TypeError):
         assert LawnGrass.__add__(grass, smartphone) == TypeError
+
+
+def test_add_product() -> None:
+    product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+    product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
+    product3 = LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
+
+    category1 = Category(
+        "Смартфоны",
+        "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
+        [product1, product2, product3],
+    )
+    assert Category.add_product(category1, product3) == None
