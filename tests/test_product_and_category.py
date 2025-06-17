@@ -12,9 +12,9 @@ def test_class_product(product_fixture):
 
 
 def test_class_category(category_fixture):
-    assert category_fixture.name == "Смартфоны"
-    assert category_fixture.description == "Смартфоны - средство получения дополнительных функций для удобства жизни"
-    assert category_fixture.products == []
+    assert category_fixture.name == "phones"
+    assert category_fixture.description == "new"
+    assert category_fixture.products == 'iphone, 13658 руб. Остаток: 7 шт.\nsamsung, 12467 руб. Остаток: 9 шт.\n''
 
 
 def test_new_product():
