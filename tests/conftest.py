@@ -18,6 +18,7 @@ def category_fixture():
 
     return Category("phones", "new", [prod_1, prod_2])
 
+
 @pytest.fixture
 def count_category_fixture() -> list:
 
@@ -47,3 +48,8 @@ def smartphone():
 @pytest.fixture
 def grass():
     return LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
+
+
+@pytest.fixture
+def repr_cls_mixing():
+    return Product('test_name_1', 'test_description_1', 100.0, 15)
