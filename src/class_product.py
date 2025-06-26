@@ -1,4 +1,17 @@
-class Product:
+from abc import ABC, abstractmethod
+
+from src.class_mixing import PrintConsoleMixing
+from src.exception_handler import CustomError
+
+
+class BaseProduct(ABC):
+
+    @abstractmethod
+    def info_class(self):
+        pass
+
+
+class Product(PrintConsoleMixing, BaseProduct):
     name: str
     description: str
     price: float
@@ -9,7 +22,24 @@ class Product:
         self.name = name
         self.description = description
         self.__price = price
-        self.quantity = quantity
+
+        if quantity == 0:
+            raise CustomError("Товар с нулевым количеством не может быть добавлен")
+        else:
+            self.quantity = quantity
+        super().__init__()
+
+    def __str__(self):
+        return f"{self.name} , {int(self.__price)} руб. Остаток: {self.quantity} шт"
+
+    def __add__(self, other):
+
+        if type(self) is type(other):
+            return self.price * self.quantity + other.price * other.quantity
+        raise TypeError
+
+    def info_class(self) -> str:
+        return f"{self.__class__.__name__}"
 
 
     @classmethod
@@ -33,15 +63,6 @@ class Product:
             print("Цена не должна быть нулевая или отрицательная")
         else:
             self.__price = set_price
-
-    def __str__(self):
-        return f"{self.name} , {int(self.__price)} руб. Остаток: {self.quantity} шт"
-
-    def __add__(self, other):
-
-        if type(self) is type(other):
-            return self.price * self.quantity + other.price * other.quantity
-        raise TypeError
 
 
 class Smartphone(Product):

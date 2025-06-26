@@ -2,6 +2,7 @@ import pytest
 
 from src.class_category import Category
 from src.class_product import LawnGrass, Product, Smartphone
+from src.exception_handler import CustomError
 
 
 @pytest.fixture
@@ -17,6 +18,7 @@ def category_fixture():
     prod_2 = Product("samsung", "A 564", 12_467, 9)
 
     return Category("phones", "new", [prod_1, prod_2])
+
 
 @pytest.fixture
 def count_category_fixture() -> list:
@@ -47,3 +49,14 @@ def smartphone():
 @pytest.fixture
 def grass():
     return LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
+
+
+@pytest.fixture
+def repr_cls_mixing():
+    return Product('test_name_1', 'test_description_1', 100.0, 15)
+
+
+@pytest.fixture
+def custom_error():
+    """Фикстура класса "CustomError" """
+    return CustomError("Тест пройден успешно!")

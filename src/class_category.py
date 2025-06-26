@@ -43,3 +43,17 @@ class Category:
             if self.name:
                 total_quantity += product.quantity
         return f"{self.name},  количество продуктов: {total_quantity} шт"
+
+
+
+    def middle_price(self) -> float:
+        """Подсчёт средней цены."""
+
+        mid_price_list = []
+        for elem in self.__products:
+            mid_price_list.append(elem.price)
+
+        if not len(mid_price_list):
+            return 0.0
+
+        return float(round(sum(mid_price_list) / len(mid_price_list), 2))
