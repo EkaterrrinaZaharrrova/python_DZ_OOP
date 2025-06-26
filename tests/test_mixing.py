@@ -4,7 +4,7 @@ from _pytest.capture import CaptureFixture
 from src.class_product import Product
 
 
-def test_class_mixing(capsys:CaptureFixture):
+def test_class_mixing(capsys: CaptureFixture):
     product = Product('test_name', 'test_description', 55.55, 25)
     check_out = capsys.readouterr()
     assert check_out.out == 'Product ("test_name", test_description, 55.55, 25)\n'

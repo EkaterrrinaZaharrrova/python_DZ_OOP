@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 
 from src.class_mixing import PrintConsoleMixing
+from src.exception_handler import CustomError
 
 
 class BaseProduct(ABC):
@@ -21,7 +22,11 @@ class Product(PrintConsoleMixing, BaseProduct):
         self.name = name
         self.description = description
         self.__price = price
-        self.quantity = quantity
+
+        if quantity == 0:
+            raise CustomError("Товар с нулевым количеством не может быть добавлен")
+        else:
+            self.quantity = quantity
         super().__init__()
 
     def __str__(self):

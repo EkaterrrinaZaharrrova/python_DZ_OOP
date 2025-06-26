@@ -2,6 +2,7 @@ import pytest
 
 from src.class_category import Category
 from src.class_product import LawnGrass, Product, Smartphone
+from src.exception_handler import CustomError
 
 
 @pytest.fixture
@@ -53,3 +54,9 @@ def grass():
 @pytest.fixture
 def repr_cls_mixing():
     return Product('test_name_1', 'test_description_1', 100.0, 15)
+
+
+@pytest.fixture
+def custom_error():
+    """Фикстура класса "CustomError" """
+    return CustomError("Тест пройден успешно!")

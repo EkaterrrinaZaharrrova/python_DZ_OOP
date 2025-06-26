@@ -92,3 +92,5 @@ def test_add_product() -> None:
     assert Category.add_product(category1, product3) is None
 
 
+def test_middle_price(category_fixture: Category):
+    assert category_fixture.middle_price() == 13062.5
